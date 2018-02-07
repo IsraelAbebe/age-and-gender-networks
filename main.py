@@ -69,6 +69,6 @@ model.add(Dense(num_classes, activation='softmax'))
 
 model.compile(loss='categorical_crossentropy', optimizer='Adam')
 model.fit_generator(train_generator, nb_epoch=epochs, steps_per_epoch=nb_train_samples // batch_size,
-                    validation_data=validation_generator, nb_val_samples=nb_val_samples,
+                    validation_data=validation_generator, nb_val_samples=nb_val_samples // batch_size,
                     class_weight='auto')
 model.save("age.h5")
