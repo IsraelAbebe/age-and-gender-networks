@@ -16,10 +16,11 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="61" column="20" lean-forward="false" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="20" />
+            <state relative-caret-position="380">
+              <caret line="77" column="29" lean-forward="false" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
+                <element signature="e#493#767#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -187,6 +188,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#493#767#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -213,6 +215,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#493#767#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -239,6 +242,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#493#767#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -257,6 +261,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#493#767#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -279,10 +284,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="61" column="20" lean-forward="false" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="20" />
+        <state relative-caret-position="380">
+          <caret line="77" column="29" lean-forward="false" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#493#767#0" expanded="false" />
           </folding>
         </state>
       </provider>
