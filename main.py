@@ -51,12 +51,22 @@ validation_generator = test_datagen.flow_from_directory(test_dir, target_size=(I
 model = Sequential()
 model.add(Conv2D(64, (3, 3), input_shape=input_shape, padding='same', activation='relu'))
 model.add(Dropout(0.2))
-model.add(Conv2D(32, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(128, (3, 3), activation='relu', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
+
+model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
+model.add(Dropout(0.2))
+model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
+
+
 model.add(Flatten())
 model.add(Dense(512, activation='relu'))
 model.add(Dropout(0.3))
+model.add(Dense(1024, activation='relu'))
+
 model.add(Dense(num_classes, activation='softmax'))
+
+
 
 model.compile(loss='categorical_crossentropy', optimizer='Adam')
 model.fit_generator(train_generator, nb_epoch=epochs, steps_per_epoch=nb_train_samples // batch_size,
