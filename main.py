@@ -66,8 +66,7 @@ model.add(Dropout(0.3))
 model.add(Dense(1024, activation='relu'))
 
 model.add(Dense(num_classes, activation='softmax'))
-
-model.compile(loss='categorical_crossentropy', optimizer='Adam')
+model.compile(optimizer=SGD(lr=0.0001, momentum=0.9), loss='categorical_crossentropy', metrics=['accuracy'])
 model.fit_generator(train_generator, nb_epoch=epochs, steps_per_epoch=nb_train_samples // batch_size,
                     validation_data=validation_generator, nb_val_samples=nb_val_samples // batch_size,
                     class_weight='auto')
