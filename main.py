@@ -72,9 +72,11 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 # model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Flatten())
-model.add(Dense(512, activation='relu'))
-model.add(Dropout(0.))
 model.add(Dense(1024, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(512, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(256, activation='relu'))
 
 model.add(Dense(num_classes, activation='softmax'))
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['accuracy'])
