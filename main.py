@@ -11,8 +11,8 @@ from keras.applications.inception_v3 import InceptionV3, preprocess_input
 from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import SGD
 
-train_dir = "data/images/train"
-test_dir = "data/images/test"
+train_dir = "data/gender/train"
+test_dir = "data/gender/test"
 
 
 def get_nb_files(directory):
