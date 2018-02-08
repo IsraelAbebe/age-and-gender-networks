@@ -45,7 +45,7 @@ test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotat
 train_generator = train_datagen.flow_from_directory(train_dir, target_size=(IM_WIDTH, IM_HEIGHT),
                                                     batch_size=batch_size)
 
-validation_generator = test_datagen.flow_from_directory(test_dir, target_size=(IM_WIDTH, IM_HEIGHT),
+test_generator = test_datagen.flow_from_directory(test_dir, target_size=(IM_WIDTH, IM_HEIGHT),
                                                         batch_size=batch_size)
 
 model = Sequential()
@@ -79,6 +79,6 @@ model.add(Dense(1024, activation='relu'))
 model.add(Dense(num_classes, activation='softmax'))
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['accuracy'])
 model.fit_generator(train_generator, nb_epoch=epochs, steps_per_epoch=nb_train_samples // batch_size,
-                    validation_data=validation_generator, nb_val_samples=nb_val_samples // batch_size,
+                    validation_data=test_generator, nb_val_samples=nb_val_samples // batch_size,
                     class_weight='auto')
 model.save("age.h5")
