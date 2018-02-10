@@ -1,15 +1,11 @@
 from __future__ import print_function
 import os
 import glob
-import sys
-import argparse
-import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras.applications.inception_v3 import InceptionV3, preprocess_input
 from keras.preprocessing.image import ImageDataGenerator
-from keras.optimizers import SGD
 
 train_dir = "data/images/train"
 test_dir = "data/images/test"
@@ -56,7 +52,7 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
 model.add(Dropout(0.5))
-model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(386, (3, 3), activation='relu', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
