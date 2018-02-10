@@ -29,7 +29,7 @@ num_classes = len(glob.glob(train_dir + "/*"))
 nb_val_samples = get_nb_files(test_dir)
 
 # input image dimensions
-IM_WIDTH, IM_HEIGHT = 100, 100
+IM_WIDTH, IM_HEIGHT = 227, 227
 input_shape = (IM_WIDTH, IM_HEIGHT, 3)
 
 train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotation_range=30,
@@ -51,13 +51,13 @@ model.add(Conv2D(256, (5, 5), activation='relu', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Conv2D(384, (3, 3), activation='relu', padding='valid'))
-model.add(Dropout(0.5))
+
 model.add(Conv2D(384, (3, 3), activation='relu', padding='valid'))
-model.add(Dropout(0.6))
+
 model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
-model.add(Dropout(0.6))
+
 model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
-model.add(Dropout(0.6))
+
 model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
 
 
