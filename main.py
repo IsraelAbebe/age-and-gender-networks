@@ -10,7 +10,6 @@ from keras.preprocessing.image import ImageDataGenerator
 train_dir = "data/images/train"
 test_dir = "data/images/test"
 
-
 def get_nb_files(directory):
     """Get number of files by searching directory recursively"""
     if not os.path.exists(directory):
@@ -32,46 +31,41 @@ nb_val_samples = get_nb_files(test_dir)
 IM_WIDTH, IM_HEIGHT = 100, 100
 input_shape = (IM_WIDTH, IM_HEIGHT, 3)
 
-train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotation_range=30,
-                                   width_shift_range=0.2, height_shift_range=0.2, shear_range=0.2, zoom_range=0.2,
-                                   horizontal_flip=True)
-test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotation_range=30, width_shift_range=0.2,
-                                  height_shift_range=0.2, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
+train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotation_range=30,width_shift_range=0.2, height_shift_range=0.2, shear_range=0.2, zoom_range=0.2,horizontal_flip=True)
+test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotation_range=30, width_shift_range=0.2,height_shift_range=0.2, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
 
-train_generator = train_datagen.flow_from_directory(train_dir, target_size=(IM_WIDTH, IM_HEIGHT),
-                                                    batch_size=batch_size)
-
-test_generator = test_datagen.flow_from_directory(test_dir, target_size=(IM_WIDTH, IM_HEIGHT),
-                                                        batch_size=batch_size)
+train_generator = train_datagen.flow_from_directory(train_dir, target_size=(IM_WIDTH, IM_HEIGHT),batch_size=batch_size)
+test_generator = test_datagen.flow_from_directory(test_dir, target_size=(IM_WIDTH, IM_HEIGHT),batch_size=batch_size)
 
 model = Sequential()
-model.add(Conv2D(96, (11, 11), input_shape=input_shape, padding='same', activation='relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Conv2D(256, (5, 5), activation='relu', padding='valid'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(384, (3, 3), activation='relu', padding='valid'))
-
-model.add(Conv2D(384, (3, 3), activation='relu', padding='valid'))
-
-model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
-
-model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
-
-model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
-
-
+model.add(Conv2D(64, (3, 3), input_shape=input_shape, padding='same', activation='relu'))
+model.add(Conv2D(64, (3, 3), input_shape=input_shape, padding='same', activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
-# model.add(Conv2D(1024, (3, 3), activation='relu', padding='valid'))
-# model.add(Dropout(0.75))
-# model.add(Conv2D(1024, (3, 3), activation='relu', padding='valid'))
-# model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(128, (3,3), activation='relu', padding='valid'))
+model.add(Conv2D(128, (3,3), activation='relu', padding='valid'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+
+model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+
+model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+
+model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Flatten())
-model.add(Dense(1024, activation='relu'))
-model.add(Dropout(0.))
-model.add(Dense(128, activation='relu'))
+model.add(Dense(4096, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(2622, activation='relu'))
 
 model.add(Dense(num_classes, activation='softmax'))
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['accuracy'])
