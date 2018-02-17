@@ -39,7 +39,7 @@ test_generator = test_datagen.flow_from_directory(test_dir, target_size=(IM_WIDT
 
 model = Sequential()
 
-model.add(Conv2D(64, 3 ,3), input_shape=input_shape, padding='same', activation='relu'))
+model.add(Conv2D(64, (3 ,3), input_shape=input_shape, padding='same', activation='relu'))
 model.add(Conv2D(64, (3, 3), input_shape=input_shape, padding='same', activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
