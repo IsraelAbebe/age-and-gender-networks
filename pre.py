@@ -2,6 +2,17 @@ import os
 import cv2
 
 
+def convert_graysale(f):
+    '''
+    :param f: file name
+    :return: returns the grayscaled and scaled version of the image
+    '''
+    image = cv2.imread(f,0)
+    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    cv2.imwrite(f, gray_image)
+    return gray_image
+
+
 def grayscale_save(f):
     '''
     :param f: file path
@@ -14,8 +25,10 @@ def grayscale_save(f):
             head, _tail = os.path.split(head)
 
         for f in files:
-            print(count , f)
-            count += 1
+            if ".jpg" in f:
+                path =  tail + "/" + f
+                print(count , f ,path)
+                count += 1
 
 
 grayscale_save()
