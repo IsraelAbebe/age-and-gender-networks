@@ -29,7 +29,7 @@ nb_val_samples = get_nb_files(test_dir)
 
 # input image dimensions
 IM_WIDTH, IM_HEIGHT = 100, 100
-input_shape = (IM_WIDTH, IM_HEIGHT)
+input_shape = (IM_WIDTH, IM_HEIGHT,1)
 
 train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotation_range=30,width_shift_range=0.2, height_shift_range=0.2, shear_range=0.2, zoom_range=0.2,horizontal_flip=True)
 test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotation_range=30, width_shift_range=0.2,height_shift_range=0.2, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
