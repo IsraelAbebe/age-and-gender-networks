@@ -29,7 +29,7 @@ nb_val_samples = get_nb_files(test_dir)
 
 # input image dimensions
 IM_WIDTH, IM_HEIGHT = 100, 100
-input_shape = (IM_WIDTH, IM_HEIGHT,1)
+input_shape = (IM_WIDTH, IM_HEIGHT)
 
 train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotation_range=30,width_shift_range=0.2, height_shift_range=0.2, shear_range=0.2, zoom_range=0.2,horizontal_flip=True)
 test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotation_range=30, width_shift_range=0.2,height_shift_range=0.2, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
@@ -39,7 +39,7 @@ test_generator = test_datagen.flow_from_directory(test_dir, target_size=(IM_WIDT
 
 model = Sequential()
 
-model.add(Conv2D(64, (1 ,1), input_shape=input_shape, padding='same', activation='relu'))
+model.add(Conv2D(64, 3 ,3), input_shape=input_shape, padding='same', activation='relu'))
 model.add(Conv2D(64, (3, 3), input_shape=input_shape, padding='same', activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
