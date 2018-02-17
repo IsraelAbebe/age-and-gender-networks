@@ -29,7 +29,7 @@ nb_val_samples = get_nb_files(test_dir)
 
 # input image dimensions
 IM_WIDTH, IM_HEIGHT = 100, 100
-input_shape = (IM_WIDTH, IM_HEIGHT, 3)
+input_shape = (IM_WIDTH, IM_HEIGHT)
 
 train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotation_range=30,width_shift_range=0.2, height_shift_range=0.2, shear_range=0.2, zoom_range=0.2,horizontal_flip=True)
 test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input, rotation_range=30, width_shift_range=0.2,height_shift_range=0.2, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
@@ -63,7 +63,7 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 # model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Flatten())
-model.add(Dense(4096, activation='relu'))
+model.add(Dense(512, activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(2622, activation='relu'))
 
