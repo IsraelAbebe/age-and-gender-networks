@@ -16,8 +16,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="76" column="48" lean-forward="false" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="48" />
+            <state relative-caret-position="462">
+              <caret line="81" column="15" lean-forward="false" selection-start-line="81" selection-start-column="15" selection-end-line="81" selection-end-column="15" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
                 <element signature="e#501#775#0" expanded="false" />
@@ -39,8 +39,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16048">
-              <caret line="1024" column="8" lean-forward="false" selection-start-line="1024" selection-start-column="8" selection-end-line="1024" selection-end-column="8" />
+            <state relative-caret-position="196">
+              <caret line="742" column="21" lean-forward="false" selection-start-line="742" selection-start-column="21" selection-end-line="742" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -393,14 +393,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16048">
-          <caret line="1024" column="8" lean-forward="false" selection-start-line="1024" selection-start-column="8" selection-end-line="1024" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -409,10 +401,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/keras/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="742" column="21" lean-forward="false" selection-start-line="742" selection-start-column="21" selection-end-line="742" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="76" column="48" lean-forward="false" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="48" />
+        <state relative-caret-position="462">
+          <caret line="81" column="15" lean-forward="false" selection-start-line="81" selection-start-column="15" selection-end-line="81" selection-end-column="15" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
             <element signature="e#501#775#0" expanded="false" />
