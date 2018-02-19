@@ -49,19 +49,19 @@ test_generator = test_datagen.flow_from_directory(test_dir, target_size=(IM_WIDT
                                                         batch_size=batch_size)
 
 model = Sequential()
-model.add(Conv2D(64, (3, 3), input_shape=input_shape, padding='same', activation='relu'))
+model.add(Conv2D(64, (3, 3), input_shape=input_shape, padding='same', activation='tanh'))
 model.add(Dropout(0.5))
-model.add(Conv2D(128, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(128, (3, 3), activation='tanh', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(256, (3, 3), activation='tanh', padding='valid'))
 model.add(Dropout(0.5))
-model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(256, (3, 3), activation='tanh', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(512, (3, 3), activation='tanh', padding='valid'))
 model.add(Dropout(0.6))
-model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
+model.add(Conv2D(512, (3, 3), activation='tanh', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 # model.add(Conv2D(1024, (3, 3), activation='relu', padding='valid'))
@@ -70,13 +70,13 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 # model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Flatten())
-model.add(Dense(512, activation='relu'))
+model.add(Dense(512, activation='tanh'))
 model.add(Dropout(0.5))
-model.add(Dense(1024, activation='relu'))
+model.add(Dense(1024, activation='tanh'))
 
 model.add(Dense(num_classes, activation='softmax'))
-ada = keras.optimizers.Adam(lr=0.01)
-model.compile(optimizer=ada, loss='categorical_crossentropy', metrics=['accuracy'])
+ada = keras.optimizers.Adam(lr=0.001)
+model.compile(optimizer=ada, loss='binary_crossentropy', metrics=['accuracy'])
 model.fit_generator(train_generator, nb_epoch=epochs, steps_per_epoch=nb_train_samples // batch_size,
                     validation_data=test_generator, nb_val_samples=nb_val_samples // batch_size,
                     class_weight='auto')
