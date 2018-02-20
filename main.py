@@ -1,18 +1,17 @@
 from __future__ import print_function
 import os
 import glob
-import sys
-import argparse
-import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
-from keras.applications.inception_v3 import InceptionV3, preprocess_input
+from keras.applications.inception_v3 import  preprocess_input
 from keras.preprocessing.image import ImageDataGenerator
-from keras.optimizers import SGD
+import numpy
+from keras.callbacks import CSVLogger
 
 train_dir = "data/genderdata/train"
 test_dir = "data/genderdata/test"
+csv_logger = CSVLogger('log.csv', append=True, separator=';')
 
 
 def get_nb_files(directory):
@@ -73,7 +72,9 @@ model.add(Dense(1024, activation='relu'))
 
 model.add(Dense(num_classes, activation='softmax'))
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-model.fit_generator(train_generator, nb_epoch=epochs, steps_per_epoch=nb_train_samples // batch_size,
+history_train = model.fit_generator(train_generator, nb_epoch=epochs, steps_per_epoch=nb_train_samples // batch_size,
                     validation_data=test_generator, nb_val_samples=nb_val_samples // batch_size,
-                    class_weight='auto')
+                    class_weight='auto',callbacks=[csv_logger])
+
 model.save("gen.h5")
+
