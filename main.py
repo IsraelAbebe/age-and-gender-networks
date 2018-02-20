@@ -8,8 +8,8 @@ from keras.applications.inception_v3 import  preprocess_input
 from keras.preprocessing.image import ImageDataGenerator
 from keras.callbacks import CSVLogger
 
-train_dir = "data/gender/train"
-test_dir = "data/gender/test"
+train_dir = "data/genderdata/train"
+test_dir = "data/genderdata/test"
 csv_logger = CSVLogger('log.csv', append=True, separator=';')
 
 
@@ -45,17 +45,17 @@ test_generator = test_datagen.flow_from_directory(test_dir, target_size=(IM_WIDT
 
 model = Sequential()
 model.add(Conv2D(64, (3, 3), input_shape=input_shape, padding='same', activation='relu'))
-# model.add(Dropout(0.5))
+model.add(Dropout(0.5))
 model.add(Conv2D(128, (3, 3), activation='relu', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
-# model.add(Dropout(0.5))
+model.add(Dropout(0.5))
 model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
-# model.add(Dropout(0.6))
+model.add(Dropout(0.6))
 model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
@@ -67,7 +67,7 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
 model.add(Dense(512, activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(1024,activation='relu'))
+model.add(Dense(1024, activation='relu'))
 
 model.add(Dense(num_classes, activation='softmax'))
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
