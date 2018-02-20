@@ -8,8 +8,8 @@ from keras.applications.inception_v3 import  preprocess_input
 from keras.preprocessing.image import ImageDataGenerator
 from keras.callbacks import CSVLogger
 
-train_dir = "data/genderdata/train"
-test_dir = "data/genderdata/test"
+train_dir = "data/gender/train"
+test_dir = "data/gender/test"
 csv_logger = CSVLogger('log.csv', append=True, separator=';')
 
 
