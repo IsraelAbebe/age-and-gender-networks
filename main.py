@@ -6,11 +6,12 @@ from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras.applications.inception_v3 import InceptionV3, preprocess_input
 from keras.preprocessing.image import ImageDataGenerator
-import numpy
+from keras.callbacks import CSVLogger
 
 
 train_dir = "data/images/train"
 test_dir = "data/images/test"
+csv_logger = CSVLogger('log.csv', append=True, separator=';')
 
 def get_nb_files(directory):
     """Get number of files by searching directory recursively"""
@@ -77,10 +78,7 @@ model.add(Dense(2622, activation='relu'))
 
 model.add(Dense(num_classes, activation='softmax'))
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['accuracy'])
-history_train = model.fit_generator(train_generator, nb_epoch=epochs, steps_per_epoch=nb_train_samples // batch_size,
+model.fit_generator(train_generator, nb_epoch=epochs, steps_per_epoch=nb_train_samples // batch_size,
                     validation_data=test_generator, nb_val_samples=nb_val_samples // batch_size,
-                    class_weight='auto')
-history_loss = history_train.history['loss']
-numpy_loss_history = numpy.array(history_loss)
-numpy.savetxt("loss_history.txt", numpy_loss_history, delimiter=",")
+                    class_weight='auto',callbacks=[csv_logger])
 model.save("age.h5")
