@@ -25,7 +25,7 @@ def get_nb_files(directory):
 
 
 batch_size = 128
-epochs = 100
+epochs = 30
 nb_train_samples = get_nb_files(train_dir)
 num_classes = len(glob.glob(train_dir + "/*"))
 nb_val_samples = get_nb_files(test_dir)
