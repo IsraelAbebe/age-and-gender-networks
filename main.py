@@ -24,7 +24,7 @@ def get_nb_files(directory):
     return cnt
 
 
-batch_size = 128
+batch_size = 64
 epochs = 100
 nb_train_samples = get_nb_files(train_dir)
 num_classes = len(glob.glob(train_dir + "/*"))
@@ -37,11 +37,9 @@ input_shape = (IM_WIDTH, IM_HEIGHT, 3)
 train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input,featurewise_std_normalization=True)
 test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input,featurewise_std_normalization=True)
 
-train_generator = train_datagen.flow_from_directory(train_dir, target_size=(IM_WIDTH, IM_HEIGHT),
-                                                    batch_size=batch_size)
+train_generator = train_datagen.flow_from_directory(train_dir, target_size=(IM_WIDTH, IM_HEIGHT),batch_size=batch_size)
 
-test_generator = test_datagen.flow_from_directory(test_dir, target_size=(IM_WIDTH, IM_HEIGHT),
-                                                        batch_size=batch_size)
+test_generator = test_datagen.flow_from_directory(test_dir, target_size=(IM_WIDTH, IM_HEIGHT),batch_size=batch_size)
 
 model = Sequential()
 model.add(Conv2D(64, (3, 3), input_shape=input_shape, padding='same', activation='relu'))
