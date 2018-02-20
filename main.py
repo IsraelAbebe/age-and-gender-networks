@@ -6,7 +6,6 @@ from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras.applications.inception_v3 import  preprocess_input
 from keras.preprocessing.image import ImageDataGenerator
-import numpy
 from keras.callbacks import CSVLogger
 
 train_dir = "data/genderdata/train"
@@ -66,9 +65,9 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 # model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Flatten())
-model.add(Dense(512, activation='relu'))
-model.add(Dropout(0.5))
 model.add(Dense(1024, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(2048, activation='relu'))
 
 model.add(Dense(num_classes, activation='softmax'))
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
