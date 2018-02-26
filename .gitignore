@@ -1,5 +1,6 @@
 data/*
 *.jpg
 */*/*/*.jpg
-*.h5
 .idea/*
+*.h5
+
