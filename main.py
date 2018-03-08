@@ -66,19 +66,19 @@ train_generator = train_datagen.flow_from_directory(train_dir, target_size=(IM_W
 test_generator = test_datagen.flow_from_directory(test_dir, target_size=(IM_WIDTH, IM_HEIGHT), batch_size=batch_size)
 
 model = Sequential()
-model.add(Conv2D(64, (3, 3), input_shape=input_shape, padding='same', activation='relu',kernel_regularizer=regularizers.l2(0.01)))
+model.add(Conv2D(64, (3, 3), input_shape=input_shape, padding='same', activation='relu'))
 model.add(Dropout(0.5))
-model.add(Conv2D(128, (3, 3), activation='relu', padding='valid',kernel_regularizer=regularizers.l2(0.01)))
+model.add(Conv2D(128, (3, 3), activation='relu', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(256, (3, 3), activation='relu', padding='valid',kernel_regularizer=regularizers.l2(0.01)))
+model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
 model.add(Dropout(0.5))
-model.add(Conv2D(256, (3, 3), activation='relu', padding='valid',kernel_regularizer=regularizers.l2(0.01)))
+model.add(Conv2D(256, (3, 3), activation='relu', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Conv2D(512, (3, 3), activation='relu', padding='valid',kernel_regularizer=regularizers.l2(0.01)))
+model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
 model.add(Dropout(0.6))
-model.add(Conv2D(512, (3, 3), activation='relu', padding='valid',kernel_regularizer=regularizers.l2(0.01)))
+model.add(Conv2D(512, (3, 3), activation='relu', padding='valid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 # model.add(Conv2D(1024, (3, 3), activation='relu', padding='valid'))
@@ -87,12 +87,12 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 # model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Flatten())
-model.add(Dense(512, activation='relu',kernel_regularizer=regularizers.l2(0.01)))
+model.add(Dense(512, activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(1024, activation='relu',kernel_regularizer=regularizers.l2(0.01)))
+model.add(Dense(1024, activation='relu'))
 
 model.add(Dense(num_classes, activation='softmax'))
-model.compile(optimizer='Adadelta', loss='binary_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='Adadelta', loss='binary_crossentropy', metrics=['accuracy', 'f1score', 'precision', 'recall'])
 history_train = model.fit_generator(train_generator, nb_epoch=epochs, steps_per_epoch=nb_train_samples // batch_size,
                                     validation_data=test_generator, nb_val_samples=nb_val_samples // batch_size,
                                     class_weight='auto', callbacks=[csv_logger])
